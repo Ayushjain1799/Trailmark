@@ -60,116 +60,60 @@ function Header() {
     <header className="header" data-header>
       <div className="overlay" data-overlay></div>
 
-      <div className="header-top">
-        <div className="container">
+      <div className="container">
 
-          <a
-            href="tel:+917471173334"
-            className="helpline-box"
-          >
-            <div className="icon-box">
-              <ion-icon name="call-outline"></ion-icon>
-            </div>
+        <a href="/" className="logo">
+          <img src={Logo} alt="Trailmark Adventures logo" />
+        </a>
 
-            <div className="wrapper">
-              <p className="helpline-title">For Further Inquiries:</p>
-              <p className="helpline-number">+91 7471173334</p>
-              <p className="helpline-number">+91 9039843339</p>
-            </div>
-          </a>
-
-          <a href="/" className="logo">
-            <img src={Logo} alt="Trailmark logo" />
-          </a>
-
-          <div className="header-btn-group">
-            <button className="search-btn" aria-label="Search">
-              <ion-icon name="search"></ion-icon>
-            </button>
+        <nav className="navbar" data-navbar>
+          <div className="navbar-top">
+            <a href="/" className="logo">
+              <img src={Logo} alt="Trailmark Adventures logo" />
+            </a>
 
             <button
-              className="nav-open-btn"
-              aria-label="Open Menu"
-              data-nav-open-btn
+              className="nav-close-btn"
+              aria-label="Close Menu"
+              data-nav-close-btn
             >
-              <ion-icon name="menu-outline"></ion-icon>
+              <ion-icon name="close-outline"></ion-icon>
             </button>
           </div>
 
-        </div>
-      </div>
-
-      <div className="header-bottom">
-        <div className="container">
-
-          <ul className="social-list">
-            <li>
-              <a
-                href="https://api.whatsapp.com/send?phone=7471173334"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-              >
-                <ion-icon name="logo-whatsapp"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://www.instagram.com/trailmarkadventures?igsh=a3RhbWc5aGZyeHBs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-              >
-                <ion-icon name="logo-instagram"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="mailto:trailmarkadventures@gmail.com"
-                className="social-link"
-              >
-                <ion-icon name="mail-outline"></ion-icon>
-              </a>
-            </li>
+          <ul className="navbar-list">
+            <li><a href="#home" className="navbar-link" data-nav-link>home</a></li>
+            <li><a href="#destination" className="navbar-link" data-nav-link>destinations</a></li>
+            <li><a href="#package" className="navbar-link" data-nav-link>packages</a></li>
+            <li><a href="#gallery" className="navbar-link" data-nav-link>gallery</a></li>
+            <li><a href="#contact" className="navbar-link" data-nav-link>contact us</a></li>
           </ul>
+        </nav>
 
-          <nav className="navbar" data-navbar>
-            <div className="navbar-top">
-              <a href="/" className="logo">
-                <img src={Logo} alt="Trailmark logo" />
-              </a>
-
-              <button
-                className="nav-close-btn"
-                aria-label="Close Menu"
-                data-nav-close-btn
-              >
-                <ion-icon name="close-outline"></ion-icon>
-              </button>
-            </div>
-
-            <ul className="navbar-list">
-              <li><a href="#home" className="navbar-link" data-nav-link>home</a></li>
-              <li><a href="#footer" className="navbar-link" data-nav-link>about us</a></li>
-              <li><a href="#destination" className="navbar-link" data-nav-link>destination</a></li>
-              <li><a href="#package" className="navbar-link" data-nav-link>packages</a></li>
-              <li><a href="#gallery" className="navbar-link" data-nav-link>gallery</a></li>
-              <li><a href="#contact" className="navbar-link" data-nav-link>contact us</a></li>
-            </ul>
-          </nav>
+        <div className="header-actions">
+          <a href="tel:+917471173334" className="header-phone">
+            <ion-icon name="call"></ion-icon>
+            <span>+91 74711 73334</span>
+          </a>
 
           <a
             href="https://api.whatsapp.com/send?phone=7471173334"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary"
+            className="btn btn-primary header-cta"
           >
             Book Now
           </a>
 
+          <button
+            className="nav-open-btn"
+            aria-label="Open Menu"
+            data-nav-open-btn
+          >
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
         </div>
+
       </div>
     </header>
   );

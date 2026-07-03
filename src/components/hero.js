@@ -4,32 +4,48 @@ function Hero() {
   return (
     <section className="hero" id="home">
       <div className="container">
-        <h2 className="h2 hero-title">
-          {" "}
-          Journey to Explore the World with Trailmark Adventures
-        </h2>
+
+        <p className="hero-tagline">India's Trusted Group Travel Community</p>
+
+        <h1 className="hero-title">
+          Travel. Explore. <span>Celebrate Life.</span>
+        </h1>
+
         <p className="hero-text">
-          At <strong>Trailmark Adventures</strong>, we are a modern travel
-          community offering end-to-end travel packages across India and abroad.
-          We specialize in crafting the best <strong>travel itineraries</strong>{" "}
-          that encourage group travel among like-minded explorers. Our offerings
-          include <strong>road trips</strong>,{" "}
-          <strong>trekking expeditions</strong>,{" "}
-          <strong>corporate tours</strong>, and
-          <strong> custom travel packages</strong>.
+          Join like-minded explorers on curated group trips, treks and road
+          expeditions across India and beyond — all planned end-to-end by
+          Trailmark Adventures.
         </p>
+
+        <div className="hero-badges">
+          <p className="hero-badge">
+            <ion-icon name="star"></ion-icon>
+            <span>4.9 Rated on Google</span>
+          </p>
+          <p className="hero-badge">
+            <ion-icon name="people"></ion-icon>
+            <span>10,000+ Happy Travellers</span>
+          </p>
+          <p className="hero-badge">
+            <ion-icon name="shield-checkmark"></ion-icon>
+            <span>100% Safe & Secure</span>
+          </p>
+        </div>
+
         <div className="btn-group">
-          <a href="#contact" className="btn btn-primary">
-            Learn more
+          <a href="#destination" className="btn btn-primary">
+            Explore Trips
           </a>
           <a
             href="https://api.whatsapp.com/send?phone=7471173334"
-            target="blank"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-secondary"
           >
-            Book now
+            Talk to an Expert
           </a>
         </div>
+
       </div>
     </section>
   );

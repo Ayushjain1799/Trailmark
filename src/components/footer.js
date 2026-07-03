@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../images/logo.png';
 
 function Footer() {
   return (
@@ -8,9 +9,13 @@ function Footer() {
         <div className="container">
 
           <div className="footer-brand">
-            {/* If Logo is NOT used, we do NOT import it */}
+            <a href="/" className="logo">
+              <img src={Logo} alt="Trailmark Adventures logo" style={{ height: 56, width: 'auto', marginBottom: 16 }} />
+            </a>
             <p className="footer-text">
-              Explore the world with Trailmark Adventures. Your journey begins here.
+              Explore the world with Trailmark Adventures — curated group
+              trips, treks and expeditions across India and beyond. Your
+              journey begins here.
             </p>
           </div>
 
@@ -33,7 +38,13 @@ function Footer() {
 
             <p>
               <a href="tel:+917471173334">
-                +91 7471173334
+                +91 74711 73334
+              </a>
+            </p>
+
+            <p>
+              <a href="tel:+919039843339">
+                +91 90398 43339
               </a>
             </p>
 

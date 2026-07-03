@@ -13,18 +13,17 @@ import popular11 from "../images/popular-11.jpg";
 
 
 const popular = [
-  { place: "LEH LADAKH", price: "₹21,999", image: popular1 },
-  { place: "SPITI VALLLEY", price: "₹17,999", image: popular2 },
-  { place: "MANALI", price: "₹6,200", image: popular3 },
-  { place: "TIRTHAN", price: "₹7999", image: popular4 },
-  { place: "SHIMLA", price: "₹12,999", image: popular5 },
-  { place: "KASHMIR", price: "₹21,999", image: popular6 },
-  { place: "RAJASTHAN", price: "₹12,999", image: popular7 },
-  { place: "PACHMARI", price: "₹4,200", image: popular8 },
-  { place: "SAR PASS TREK", price: "₹6,999", image: popular9 },
-  { place: "MANALI KASOL COUPLE PACKAGE", price: "₹14,999", image: popular10 },
-  { place: "CHOPTA CHANDRASHILA", price: "₹7,500", image: popular11 },
-
+  { place: "Leh Ladakh", price: "₹21,999", image: popular1 },
+  { place: "Spiti Valley", price: "₹17,999", image: popular2 },
+  { place: "Manali", price: "₹6,200", image: popular3 },
+  { place: "Tirthan", price: "₹7,999", image: popular4 },
+  { place: "Shimla", price: "₹12,999", image: popular5 },
+  { place: "Kashmir", price: "₹21,999", image: popular6 },
+  { place: "Rajasthan", price: "₹12,999", image: popular7 },
+  { place: "Pachmarhi", price: "₹4,200", image: popular8 },
+  { place: "Sar Pass Trek", price: "₹6,999", image: popular9 },
+  { place: "Manali Kasol Couple Package", price: "₹14,999", image: popular10 },
+  { place: "Chopta Chandrashila", price: "₹7,500", image: popular11 },
 ];
 
 const PopularDestination = () => {
@@ -34,17 +33,16 @@ const PopularDestination = () => {
     setShowAll(!showAll);
   };
 
-  const displayedDestinations = showAll ? popular : popular.slice(0, 3);
+  const displayedDestinations = showAll ? popular : popular.slice(0, 6);
 
   return (
     <section className="popular" id="destination">
       <div className="container">
-        <p className="section-subtitle">Uncover place</p>
-        <h2 className="h2 section-title">Popular destination</h2>
+        <p className="section-subtitle">Trending Now</p>
+        <h2 className="h2 section-title">Popular Destinations</h2>
         <p className="section-text">
           Explore breathtaking destinations and unlock unforgettable adventures
-          with us! Discover the india's most sought-after travel spots on our
-          website today.
+          with us! Discover India's most sought-after travel spots today.
         </p>
         <ul className="popular-list">
           {displayedDestinations.map((destination, index) => (
@@ -53,9 +51,13 @@ const PopularDestination = () => {
                 <figure className="card-img">
                   <img
                     src={destination.image}
-                    alt={destination.name}
+                    alt={destination.place}
                     loading="lazy"
                   />
+                  <p className="card-chip">
+                    <ion-icon name="flame"></ion-icon>
+                    <span>Trending</span>
+                  </p>
                 </figure>
                 <div className="card-content">
                   <div className="card-rating">
@@ -64,26 +66,49 @@ const PopularDestination = () => {
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
+                    <span>5.0</span>
                   </div>
                   <h3 className="h3 card-title">
                     <a
                       href="https://api.whatsapp.com/send?phone=7471173334"
-                      target="blank"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {destination.place}
                     </a>
                   </h3>
-                  <p className="card-text ">
-                    Starting Price {destination.price}
-                  </p>
+                  <div className="card-meta">
+                    <p className="card-meta-item">
+                      <ion-icon name="location"></ion-icon>
+                      <span>India</span>
+                    </p>
+                    <p className="card-meta-item">
+                      <ion-icon name="people"></ion-icon>
+                      <span>Group Trip</span>
+                    </p>
+                  </div>
+                </div>
+                <div className="card-price-row">
+                  <div>
+                    <p className="price-label">Starting from</p>
+                    <p className="price-amount">{destination.price}</p>
+                  </div>
+                  <a
+                    href="https://api.whatsapp.com/send?phone=7471173334"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                  >
+                    Book Now
+                  </a>
                 </div>
               </div>
             </li>
           ))}
         </ul>
         {!showAll && (
-          <button className="btn btn-primary" onClick={moreDestination}>
-            More destination
+          <button className="btn btn-secondary" onClick={moreDestination}>
+            View All Destinations
           </button>
         )}
       </div>
