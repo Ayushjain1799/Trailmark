@@ -1,67 +1,11 @@
 import React, { useState } from 'react';
 import useReveal from '../hooks/useReveal';
-
-import package2 from '../images/packege-2.png';
-import package3 from '../images/packege-3.png';
-import package4 from '../images/packege-4.png';
-import package5 from '../images/packege-5.png';
-import package6 from '../images/packege-6.jpg';
-
-const packages = [
-  {
-    place: 'Singapore',
-    title: 'Explore The Lion City',
-    description: 'Experience modern culture and cuisine in Singapore.',
-    duration: '5D/6N',
-    capacity: '10 pax',
-    image: package5,
-    price: '₹34,999',
-    reviews: 40,
-  },
-  {
-    place: 'Maldives',
-    title: 'Summer Holiday In Maldives',
-    description: 'Crystal-clear waters and luxury beaches.',
-    duration: '7D/6N',
-    capacity: '10 pax',
-    image: package2,
-    price: '₹74,999',
-    reviews: 20,
-  },
-  {
-    place: 'Thailand',
-    title: 'Explore Thailand',
-    description: 'Culture, beaches, and vibrant nightlife.',
-    duration: '4D/3N',
-    capacity: '15 pax',
-    image: package3,
-    price: '₹18,000',
-    reviews: 40,
-  },
-  {
-    place: 'Vietnam',
-    title: 'Discover Vietnam',
-    description: 'Rich culture and scenic landscapes.',
-    duration: '4D/3N',
-    capacity: '5 pax',
-    image: package4,
-    price: '₹62,999',
-    reviews: 20,
-  },
-  {
-    place: 'Dubai',
-    title: 'Dubai Experience',
-    description: 'Luxury and innovation in one city.',
-    duration: '7D/6N',
-    capacity: '10 pax',
-    image: package6,
-    price: '₹29,999',
-    reviews: 25,
-  },
-];
+import ItineraryModal from './itineraryModal';
+import { intlPackages, whatsappPlanLink } from '../data/trips';
 
 function PackageSection() {
   const [showAll, setShowAll] = useState(false);
+  const [selectedTrip, setSelectedTrip] = useState(null);
   useReveal([showAll]);
 
   return (
@@ -74,20 +18,31 @@ function PackageSection() {
         </h2>
         <p className="section-text">
           Handpicked international escapes with flights, stays and experiences
-          taken care of — just pack your bags.
+          taken care of — tap a package for the full day-by-day plan.
         </p>
 
         <ul className="package-list">
-          {(showAll ? packages : packages.slice(0, 3)).map((p, i) => (
+          {(showAll ? intlPackages : intlPackages.slice(0, 3)).map((p, i) => (
             <li
-              key={p.place}
+              key={p.name}
               data-reveal
               style={{ '--reveal-delay': `${(i % 3) * 110}ms` }}
             >
-              <div className="package-card">
+              <div
+                className="package-card"
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedTrip(p)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedTrip(p);
+                  }
+                }}
+              >
 
                 <figure className="card-banner">
-                  <img src={p.image} alt={p.place} loading="lazy" />
+                  <img src={p.image} alt={p.name} loading="lazy" />
                   <p className="card-chip">
                     <ion-icon name="time"></ion-icon>
                     <span>{p.duration}</span>
@@ -108,11 +63,15 @@ function PackageSection() {
                   <div className="card-meta">
                     <p className="card-meta-item">
                       <ion-icon name="location"></ion-icon>
-                      <span>{p.place}</span>
+                      <span>{p.name}</span>
                     </p>
                     <p className="card-meta-item">
                       <ion-icon name="people"></ion-icon>
                       <span>{p.capacity}</span>
+                    </p>
+                    <p className="card-meta-item view-itinerary">
+                      <ion-icon name="map"></ion-icon>
+                      <span>View itinerary</span>
                     </p>
                   </div>
                 </div>
@@ -123,10 +82,11 @@ function PackageSection() {
                     <p className="price-amount">{p.price}</p>
                   </div>
                   <a
-                    href="https://api.whatsapp.com/send?phone=7471173334"
+                    href={whatsappPlanLink(p.name)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     Book Now
                   </a>
@@ -146,6 +106,8 @@ function PackageSection() {
         </div>
 
       </div>
+
+      <ItineraryModal trip={selectedTrip} onClose={() => setSelectedTrip(null)} />
     </section>
   );
 }
