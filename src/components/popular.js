@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useReveal from "../hooks/useReveal";
 import popular1 from "../images/popular-1.png";
 import popular2 from "../images/popular-2.png";
 import popular3 from "../images/popular-3.png";
@@ -26,91 +27,75 @@ const popular = [
   { place: "Chopta Chandrashila", price: "₹7,500", image: popular11 },
 ];
 
+const whatsappLink =
+  "https://api.whatsapp.com/send?phone=7471173334";
+
 const PopularDestination = () => {
   const [showAll, setShowAll] = useState(false);
-
-  const moreDestination = () => {
-    setShowAll(!showAll);
-  };
+  useReveal([showAll]);
 
   const displayedDestinations = showAll ? popular : popular.slice(0, 6);
 
   return (
-    <section className="popular" id="destination">
+    <section className="popular section-center" id="destination">
       <div className="container">
         <p className="section-subtitle">Trending Now</p>
-        <h2 className="h2 section-title">Popular Destinations</h2>
+        <h2 className="h2 section-title">
+          Popular <em>Destinations</em>
+        </h2>
         <p className="section-text">
           Explore breathtaking destinations and unlock unforgettable adventures
           with us! Discover India's most sought-after travel spots today.
         </p>
         <ul className="popular-list">
           {displayedDestinations.map((destination, index) => (
-            <li key={index}>
-              <div className="popular-card">
-                <figure className="card-img">
-                  <img
-                    src={destination.image}
-                    alt={destination.place}
-                    loading="lazy"
-                  />
-                  <p className="card-chip">
-                    <ion-icon name="flame"></ion-icon>
-                    <span>Trending</span>
+            <li
+              key={destination.place}
+              data-reveal
+              style={{ "--reveal-delay": `${(index % 3) * 110}ms` }}
+            >
+              <a
+                className="dest-card"
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={destination.image}
+                  alt={destination.place}
+                  loading="lazy"
+                />
+                <p className="card-chip">
+                  <ion-icon name="flame"></ion-icon>
+                  <span>Trending</span>
+                </p>
+                <div className="dest-content">
+                  <p className="dest-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <span>5.0 · Group Trip · India</span>
                   </p>
-                </figure>
-                <div className="card-content">
-                  <div className="card-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <span>5.0</span>
-                  </div>
-                  <h3 className="h3 card-title">
-                    <a
-                      href="https://api.whatsapp.com/send?phone=7471173334"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {destination.place}
-                    </a>
-                  </h3>
-                  <div className="card-meta">
-                    <p className="card-meta-item">
-                      <ion-icon name="location"></ion-icon>
-                      <span>India</span>
+                  <h3 className="dest-name">{destination.place}</h3>
+                  <div className="dest-bottom">
+                    <p className="dest-price">
+                      Starting from
+                      <strong>{destination.price}</strong>
                     </p>
-                    <p className="card-meta-item">
-                      <ion-icon name="people"></ion-icon>
-                      <span>Group Trip</span>
-                    </p>
+                    <span className="dest-arrow">
+                      <ion-icon name="arrow-forward"></ion-icon>
+                    </span>
                   </div>
                 </div>
-                <div className="card-price-row">
-                  <div>
-                    <p className="price-label">Starting from</p>
-                    <p className="price-amount">{destination.price}</p>
-                  </div>
-                  <a
-                    href="https://api.whatsapp.com/send?phone=7471173334"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary"
-                  >
-                    Book Now
-                  </a>
-                </div>
-              </div>
+              </a>
             </li>
           ))}
         </ul>
-        {!showAll && (
-          <button className="btn btn-secondary" onClick={moreDestination}>
-            View All Destinations
-          </button>
-        )}
+        <div className="btn-wrapper">
+          {!showAll && (
+            <button className="btn btn-teal" onClick={() => setShowAll(true)}>
+              View All Destinations
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );

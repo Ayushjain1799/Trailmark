@@ -9,11 +9,15 @@ function Header() {
 
       if (!header || !goTopBtn) return;
 
-      if (window.scrollY >= 200) {
+      if (window.scrollY >= 60) {
         header.classList.add("active");
-        goTopBtn.classList.add("active");
       } else {
         header.classList.remove("active");
+      }
+
+      if (window.scrollY >= 400) {
+        goTopBtn.classList.add("active");
+      } else {
         goTopBtn.classList.remove("active");
       }
     };
@@ -84,6 +88,7 @@ function Header() {
           <ul className="navbar-list">
             <li><a href="#home" className="navbar-link" data-nav-link>home</a></li>
             <li><a href="#destination" className="navbar-link" data-nav-link>destinations</a></li>
+            <li><a href="#planner" className="navbar-link" data-nav-link>trip planner</a></li>
             <li><a href="#package" className="navbar-link" data-nav-link>packages</a></li>
             <li><a href="#gallery" className="navbar-link" data-nav-link>gallery</a></li>
             <li><a href="#contact" className="navbar-link" data-nav-link>contact us</a></li>

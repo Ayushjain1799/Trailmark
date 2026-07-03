@@ -3,11 +3,14 @@ import './App.css';
 import Header from './components/header';
 import Hero from './components/hero';
 import TourSearch from './components/tourSearch';
-import PackageSection from './components/package'
-import GallerySection from './components/gallery'
-import Footer from './components/footer';
 import PopularDestination from './components/popular';
+import TripPlanner from './components/tripPlanner';
+import PackageSection from './components/package';
+import WhyUs from './components/whyUs';
+import GallerySection from './components/gallery';
+import Testimonials from './components/testimonials';
 import ContactSection from './components/contactUs';
+import Footer from './components/footer';
 
 function App() {
   const scrollToTop = () => {
@@ -19,13 +22,16 @@ function App() {
       {/* Header Component */}
       <Header />
 
-      {/* Main Content Component */}
+      {/* Main Content */}
       <Hero />
 
       <TourSearch />
       <PopularDestination />
+      <TripPlanner />
       <PackageSection />
+      <WhyUs />
       <GallerySection />
+      <Testimonials />
       <ContactSection />
 
       {/* Footer Component */}

@@ -5,16 +5,16 @@ function Hero() {
     <section className="hero" id="home">
       <div className="container">
 
-        <p className="hero-tagline">India's Trusted Group Travel Community</p>
+        <p className="hero-tagline">Wander Often · Wonder Always</p>
 
         <h1 className="hero-title">
-          Travel. Explore. <span>Celebrate Life.</span>
+          Find Your Next <em>Great Adventure</em>
         </h1>
 
         <p className="hero-text">
-          Join like-minded explorers on curated group trips, treks and road
-          expeditions across India and beyond — all planned end-to-end by
-          Trailmark Adventures.
+          Curated group trips, treks and road expeditions across India and
+          beyond — planned end-to-end by Trailmark Adventures, so all you do
+          is show up and explore.
         </p>
 
         <div className="hero-badges">
@@ -47,6 +47,8 @@ function Hero() {
         </div>
 
       </div>
+
+      <ion-icon className="hero-scroll" name="chevron-down-outline"></ion-icon>
     </section>
   );
 }

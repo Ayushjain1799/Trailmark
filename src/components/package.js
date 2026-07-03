@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useReveal from '../hooks/useReveal';
 
 import package2 from '../images/packege-2.png';
 import package3 from '../images/packege-3.png';
@@ -61,13 +62,16 @@ const packages = [
 
 function PackageSection() {
   const [showAll, setShowAll] = useState(false);
+  useReveal([showAll]);
 
   return (
-    <section className="package" id="package">
+    <section className="package section-center" id="package">
       <div className="container">
 
         <p className="section-subtitle">International Getaways</p>
-        <h2 className="h2 section-title">Our International Packages</h2>
+        <h2 className="h2 section-title">
+          Our International <em>Packages</em>
+        </h2>
         <p className="section-text">
           Handpicked international escapes with flights, stays and experiences
           taken care of — just pack your bags.
@@ -75,7 +79,11 @@ function PackageSection() {
 
         <ul className="package-list">
           {(showAll ? packages : packages.slice(0, 3)).map((p, i) => (
-            <li key={i}>
+            <li
+              key={p.place}
+              data-reveal
+              style={{ '--reveal-delay': `${(i % 3) * 110}ms` }}
+            >
               <div className="package-card">
 
                 <figure className="card-banner">
@@ -129,14 +137,13 @@ function PackageSection() {
           ))}
         </ul>
 
-        {!showAll && (
-          <button
-            className="btn btn-secondary"
-            onClick={() => setShowAll(true)}
-          >
-            View All Packages
-          </button>
-        )}
+        <div className="btn-wrapper">
+          {!showAll && (
+            <button className="btn btn-teal" onClick={() => setShowAll(true)}>
+              View All Packages
+            </button>
+          )}
+        </div>
 
       </div>
     </section>
